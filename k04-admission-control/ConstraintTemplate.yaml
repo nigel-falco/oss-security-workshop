@@ -20,7 +20,13 @@ spec:
         package k8sallowedrepos
 
         violation[{"msg": msg}] {
-          input.review.object.spec.containers[_].image
-          not input.review.object.spec.containers[_].image in {repo | repo := input.parameters.repos[_]}
-          msg := sprintf("The image '%v' is not allowed. Allowed repos are: %v", [input.review.object.spec.containers[_].image, input.parameters.repos])
+          image := input.review.object.spec.containers[_].image
+          not allowed_image(image)
+          msg := sprintf("The image '%v' is not allowed. Allowed repos are: %v", [image, input.parameters.repos])
+        }
+
+        allowed_image(image) {
+          some repo
+          image matches repo
+          repo := input.parameters.repos[_]
         }
