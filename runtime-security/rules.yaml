@@ -40,7 +40,7 @@
   actions:
     - action: Terminate Pod
       parameters:
-        grace_period_seconds: 8
+        grace_period_seconds: 0
 
 - rule: Terminal shell in container 
   match:
