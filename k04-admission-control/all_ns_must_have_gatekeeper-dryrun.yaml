@@ -3,21 +3,10 @@ kind: K8sRequiredLabels
 metadata:
   name: ns-must-have-gk
 spec:
-  enforcementAction: dryrun
+  dryRun: true  # Enables dry-run mode
   match:
     kinds:
       - apiGroups: [""]
         kinds: ["Namespace"]
   parameters:
-    labels: ["gatekeeper"]
-status:
-  enforced: true
-  violations:
-  - enforcementAction: dryrun
-    kind: Namespace
-    message: 'you must provide labels: {"gatekeeper"}'
-    name: default
-  - enforcementAction: dryrun
-    kind: Namespace
-    message: 'you must provide labels: {"gatekeeper"}'
-    name: gatekeeper-system
+    labels: ["lars-is-the-expert"]
