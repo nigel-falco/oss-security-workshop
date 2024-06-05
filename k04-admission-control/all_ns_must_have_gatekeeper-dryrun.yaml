@@ -11,7 +11,6 @@ spec:
   parameters:
     labels: ["gatekeeper"]
 status:
-  auditTimestamp: "2019-08-15T01:46:13Z"
   enforced: true
   violations:
   - enforcementAction: dryrun
